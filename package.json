@@ -1,0 +1,26 @@
+{
+  "name": "react-socket-todo",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node node_modules/jest-cli/bin/jest.js"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.10.6",
+    "react": "^0.12.2",
+    "socket.io": "^1.2.1",
+    "react-tools": "^0.12.2"
+  },
+  "devDependencies": {
+    "jest-cli": "^0.2.1"
+  }
+}

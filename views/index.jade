@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    script(type="text/javascript").
+      if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+        var msViewportStyle = document.createElement("style");
+        msViewportStyle.appendChild(
+          document.createTextNode(
+            "@-ms-viewport{width:auto!important}"
+          )
+        );
+        document.getElementsByTagName("head")[0].
+          appendChild(msViewportStyle);
+      }
+    meta(name="description", content="")
+    meta(name="author", content="")
+    title React Todo & socket.io
+    // Bootstrap core CSS
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css")
+    // Custom styles for this template
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css")
+    base(href="/")
+  body
+    // angular inject views
+    .container-fluid
+      .row
+        #todoApp.col-xs-12 #{markup.world}
+    
+    script(id="initial-state" type="application/json") #{state}
+
+    // required for bootstrap
+    script(src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.js")
+
+    script(src="https://cdn.socket.io/socket.io-1.2.1.js")

@@ -5,7 +5,7 @@ var routes = {
   index: function (req, res) {
 
     var todos = ['hello'];
-    var markup = {world:'world'};
+    var markup = {world:'<b>world</b>'};
 
     res.render('index', {
       markup: markup,

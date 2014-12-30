@@ -28,7 +28,8 @@ html(lang="en")
     // angular inject views
     .container-fluid
       .row
-        #react-app.col-xs-12 !{markup.world}
+        #react-app.col-xs-12 
+        | !{markup}
     
     script(id="initial-state" type="application/json") #{state}
 

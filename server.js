@@ -11,7 +11,8 @@ app.set('views', __dirname + '/views');
 
 var routes = require('./routes');
 
-var todos = ['a', 'b'];
+// test data currently
+var todos = [{ user: 'brian', text: 'take dog out', key: 1419911800571 }, { user: 'brian', text: 'eat', key: 1419911800580 }];
 
 var setCurrentTodosMiddle = function (req, res, next) {
   req.theCurrentTodos = todos;

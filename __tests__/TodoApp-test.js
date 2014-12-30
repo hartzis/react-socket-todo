@@ -12,7 +12,7 @@ describe('TodoApp', function() {
   var TestUtils = React.addons.TestUtils;
 
   var renderedTodoApp = TestUtils.renderIntoDocument(
-    <TodoApp />
+    <TodoApp todos={[]} />
   );
     
 
@@ -27,18 +27,26 @@ describe('TodoApp', function() {
     var todoForm = TestUtils.findRenderedDOMComponentWithClass(
       renderedTodoApp, 'todoForm');
 
-    var inputBox = TestUtils.findRenderedDOMComponentWithClass(
-      renderedTodoApp, 'todoInput');
+    var inputBoxUser = TestUtils.findRenderedDOMComponentWithClass(
+      renderedTodoApp, 'userInput');
 
-    inputBox.getDOMNode().value = 'take dog out';
-    expect(inputBox.getDOMNode().value).toEqual('take dog out');
-    TestUtils.Simulate.change(inputBox);
+    var inputBoxText = TestUtils.findRenderedDOMComponentWithClass(
+      renderedTodoApp, 'textInput');
+
+    // set user
+    inputBoxUser.getDOMNode().value = 'brian';
+    expect(inputBoxUser.getDOMNode().value).toEqual('brian');
+    TestUtils.Simulate.change(inputBoxUser);
+
+    inputBoxText.getDOMNode().value = 'take dog out';
+    expect(inputBoxText.getDOMNode().value).toEqual('take dog out');
+    TestUtils.Simulate.change(inputBoxText);
     // submit first item
     TestUtils.Simulate.submit(todoForm);    
 
-    inputBox.getDOMNode().value = 'get food';
-    expect(inputBox.getDOMNode().value).toEqual('get food');
-    TestUtils.Simulate.change(inputBox);
+    inputBoxText.getDOMNode().value = 'get food';
+    expect(inputBoxText.getDOMNode().value).toEqual('get food');
+    TestUtils.Simulate.change(inputBoxText);
     // submit second item
     TestUtils.Simulate.submit(todoForm);
 
@@ -51,15 +59,15 @@ describe('TodoApp', function() {
     var theTodoList = TestUtils.findRenderedDOMComponentWithClass(
       renderedTodoApp, 'theTodoList');
 
-    var todoListItems = TestUtils.scryRenderedDOMComponentsWithTag(
-      renderedTodoApp, 'li');
+    var todoListItems = TestUtils.scryRenderedDOMComponentsWithClass(
+      renderedTodoApp, 'theTodoListItem');
 
     // does the todo list DOM exist
     expect(TestUtils.isDOMComponent( theTodoList )).toBe(true);
 
     // are there two list items that have been added
-    expect(todoListItems[0].getDOMNode().textContent).toEqual('take dog out');
-    expect(todoListItems[1].getDOMNode().textContent).toEqual('get food');
+    expect(todoListItems[0].getDOMNode().textContent).toEqual('brian: take dog out');
+    expect(todoListItems[1].getDOMNode().textContent).toEqual('brian: get food');
 
   });
 

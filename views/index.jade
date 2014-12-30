@@ -28,11 +28,8 @@ html(lang="en")
     // angular inject views
     .container-fluid
       .row
-        #todoApp.col-xs-12 !{markup.world}
+        #react-app.col-xs-12 !{markup.world}
     
     script(id="initial-state" type="application/json") #{state}
-
-    // required for bootstrap
-    script(src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.js")
 
     script(src="https://cdn.socket.io/socket.io-1.2.1.js")

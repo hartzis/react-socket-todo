@@ -11,7 +11,14 @@ app.set('views', __dirname + '/views');
 
 var routes = require('./routes');
 
-app.get('/', routes.index);
+var todos = ['a', 'b'];
+
+var setCurrentTodosMiddle = function (req, res, next) {
+  req.theCurrentTodos = todos;
+  return next();
+}
+
+app.get('/', setCurrentTodosMiddle, routes.index);
 
 io.on('connection', function(socket){
   console.log('a user connected');

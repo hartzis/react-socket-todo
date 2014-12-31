@@ -4,20 +4,9 @@ html(lang="en")
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1")
-    script(type="text/javascript").
-      if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-        var msViewportStyle = document.createElement("style");
-        msViewportStyle.appendChild(
-          document.createTextNode(
-            "@-ms-viewport{width:auto!important}"
-          )
-        );
-        document.getElementsByTagName("head")[0].
-          appendChild(msViewportStyle);
-      }
     meta(name="description", content="")
     meta(name="author", content="")
-    title React Todo & socket.io
+    title React Todo with socket.io
     // Bootstrap core CSS
     link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
     link(rel="stylesheet", type="text/css", href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css")
@@ -28,10 +17,9 @@ html(lang="en")
     // angular inject views
     .container-fluid
       .row
-        #react-app.col-xs-12 
-        | !{markup}
+        #react-app.col-xs-12 !{markup}
     
-    script(id="initial-state" type="application/json") #{state}
+    script(id="initial-state" type="application/json") !{state}
 
     script(src="https://cdn.socket.io/socket.io-1.2.1.js")
     script(src="js/bundle.js")

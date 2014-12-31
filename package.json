@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "node node_modules/jest-cli/bin/jest.js"
+    "test": "node node_modules/jest-cli/bin/jest.js",
+    "browserify": "browserify app.js | uglifyjs > public/js/bundle.js",
+    "build": "npm run browserify "
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/preprocessor.js",
@@ -23,6 +25,14 @@
     "node-jsx": "^0.12.4"
   },
   "devDependencies": {
-    "jest-cli": "^0.2.1"
+    "jest-cli": "^0.2.1",
+    "browserify": "^8.0.2",
+    "reactify": "^0.17.1",
+    "uglify-js": "^2.4.16"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
   }
 }

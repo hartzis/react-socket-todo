@@ -22,18 +22,21 @@ var TodoApp = React.createClass({
     var now = new Date();
     var key = now.valueOf();
     var newTodo = { user: this.state.user, text: this.state.text, key: key };
-    var nextItems = this.addTodo(newTodo)
     var nextText = '';
-    this.setState({items: nextItems, text: nextText});
+
+    this.addTodo(newTodo);
+    this.setState({text: nextText});
     this.broadcastTodo(newTodo);
   },
   addTodo: function(newTodo) {
-    return this.state.items.concat([newTodo]);
+    var nextItems = this.state.items.concat([newTodo]);
+    this.setState({items: nextItems});
   },
   broadcastTodo: function (newTodo) {
     var socket = io();
 
     socket.emit('todo', newTodo);
+
   },
   // Called directly after component rendering, only on client
   componentDidMount: function(){

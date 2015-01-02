@@ -25,8 +25,10 @@ io.on('connection', function(socket){
   console.log('a user connected');
   
   socket.on('todo', function (newTodo) {
+    
     console.log(newTodo);
     socket.broadcast.emit('todo', newTodo);
+
   });
 
 });

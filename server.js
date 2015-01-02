@@ -27,6 +27,9 @@ io.on('connection', function(socket){
   socket.on('todo', function (newTodo) {
     
     console.log(newTodo);
+
+    todos.push(newTodo);
+
     socket.broadcast.emit('todo', newTodo);
 
   });

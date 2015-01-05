@@ -6,6 +6,8 @@ var React = require('react/addons');
 
 var TodoList = require('./TodoList.react');
 
+var controller = require('./controller');
+
 var TodoApp = React.createClass({
   getInitialState: function( props ) {
     props = props || this.props;
@@ -26,34 +28,18 @@ var TodoApp = React.createClass({
 
     this.addTodo(newTodo);
     this.setState({text: nextText});
-    this.broadcastTodo(newTodo);
+
+    // emit todo
+    controller.broadcastTodo(newTodo);
   },
   addTodo: function(newTodo) {
     var nextItems = this.state.items.concat([newTodo]);
     this.setState({items: nextItems});
   },
-  broadcastTodo: function (newTodo) {
-    var socket = io();
-
-    socket.emit('todo', newTodo);
-
-  },
   // Called directly after component rendering, only on client
-  componentDidMount: function(){
+  componentDidMount: function() {
 
-    // Preserve self reference
-    var self = this;
-
-    // Initialize socket.io
-    var socket = io();
-
-    // On todo event emission...
-    socket.on('todo', function (data) {
-
-        // Add a todo
-        self.addTodo(data);
-
-    });
+    controller.receivedTodo(this);
 
   },
   render: function() {
